@@ -1,0 +1,14 @@
+/home/bruno/C#/meetapp-dotnet/bin/Debug/netcoreapp2.2/meetapp-dotnet.deps.json
+/home/bruno/C#/meetapp-dotnet/bin/Debug/netcoreapp2.2/meetapp-dotnet.runtimeconfig.json
+/home/bruno/C#/meetapp-dotnet/bin/Debug/netcoreapp2.2/meetapp-dotnet.runtimeconfig.dev.json
+/home/bruno/C#/meetapp-dotnet/bin/Debug/netcoreapp2.2/meetapp-dotnet.dll
+/home/bruno/C#/meetapp-dotnet/bin/Debug/netcoreapp2.2/meetapp-dotnet.pdb
+/home/bruno/C#/meetapp-dotnet/obj/Debug/netcoreapp2.2/meetapp-dotnet.csprojAssemblyReference.cache
+/home/bruno/C#/meetapp-dotnet/obj/Debug/netcoreapp2.2/meetapp-dotnet.csproj.CoreCompileInputs.cache
+/home/bruno/C#/meetapp-dotnet/obj/Debug/netcoreapp2.2/meetapp-dotnet.RazorAssemblyInfo.cache
+/home/bruno/C#/meetapp-dotnet/obj/Debug/netcoreapp2.2/meetapp-dotnet.RazorAssemblyInfo.cs
+/home/bruno/C#/meetapp-dotnet/obj/Debug/netcoreapp2.2/meetapp-dotnet.AssemblyInfoInputs.cache
+/home/bruno/C#/meetapp-dotnet/obj/Debug/netcoreapp2.2/meetapp-dotnet.AssemblyInfo.cs
+/home/bruno/C#/meetapp-dotnet/obj/Debug/netcoreapp2.2/meetapp-dotnet.RazorTargetAssemblyInfo.cache
+/home/bruno/C#/meetapp-dotnet/obj/Debug/netcoreapp2.2/meetapp-dotnet.dll
+/home/bruno/C#/meetapp-dotnet/obj/Debug/netcoreapp2.2/meetapp-dotnet.pdb

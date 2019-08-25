@@ -21,5 +21,20 @@ namespace meetapp_dotnet.Persistence.Repositories
     {
       await _context.Users.AddAsync(user);
     }
+
+    public async Task<Users> FindByIdAsync(int id)
+    {
+      return await _context.Users.FindAsync(id);
+    }
+
+    public void Update(Users user)
+    {
+      _context.Users.Update(user);
+    }
+
+    public void Remove(Users user)
+    {
+      _context.Users.Remove(user);
+    }
   }
 }

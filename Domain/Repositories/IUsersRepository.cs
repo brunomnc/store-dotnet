@@ -8,5 +8,8 @@ namespace meetapp_dotnet.Domain.Repositories
   {
     Task<IEnumerable<Users>> ListAsync();
     Task AddAsync(Users user);
+    Task<Users> FindByIdAsync(int id);
+    void Update(Users user);
+    void Remove(Users user);
   }
 }

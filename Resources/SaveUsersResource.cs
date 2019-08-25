@@ -9,6 +9,7 @@ namespace meetapp_dotnet.Resources
     public string Name { get; set; }
     [Required]
     [MaxLength(50)]
+    public int Age { get; set; }
     public string Email { get; set; }
     [Required]
     [MaxLength(4)]

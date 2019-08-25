@@ -48,8 +48,39 @@ namespace meetapp_dotnet.Controllers
 
       var userResource = _mapper.Map<Users, UsersResource>(result.User);
       return Ok(userResource);
+    }
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutAsync(int id, [FromBody] SaveUsersResource resource)
+    {
+      if (!ModelState.IsValid)
+      {
+        return BadRequest();
+      }
 
+      var user = _mapper.Map<SaveUsersResource, Users>(resource);
+      var result = await _userService.UpdateAsync(id, user);
 
+      if (!result.Success)
+      {
+        return BadRequest();
+      }
+
+      var userResource = _mapper.Map<Users, UsersResource>(result.User);
+      return Ok(userResource);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync(int id)
+    {
+      var result = await _userService.DeleteAsync(id);
+
+      if (!result.Success)
+      {
+        return BadRequest();
+      }
+
+      var userResource = _mapper.Map<Users, UsersResource>(result.User);
+      return Ok(userResource);
     }
   }
 }

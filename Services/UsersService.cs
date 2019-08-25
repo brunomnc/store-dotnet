@@ -24,18 +24,64 @@ namespace meetapp_dotnet.Services
       return await _usersRepository.ListAsync();
     }
 
-    public async Task<SaveUserResponse> SaveAsync(Users user)
+    public async Task<UserResponse> SaveAsync(Users user)
     {
       try
       {
         await _usersRepository.AddAsync(user);
         await _unitOfWork.CompleteAsync();
 
-        return new SaveUserResponse(user);
+        return new UserResponse(user);
       }
       catch (Exception ex)
       {
-        return new SaveUserResponse($"error: {ex.Message}");
+        return new UserResponse($"error: {ex.Message}");
+      }
+    }
+
+    public async Task<UserResponse> UpdateAsync(int id, Users user)
+    {
+      var userExists = await _usersRepository.FindByIdAsync(id);
+
+      if (userExists == null)
+      {
+        return new UserResponse("User not found");
+      }
+
+      userExists.Name = user.Name;
+
+      try
+      {
+        _usersRepository.Update(userExists);
+        await _unitOfWork.CompleteAsync();
+
+        return new UserResponse(userExists);
+      }
+      catch (Exception e)
+      {
+        return new UserResponse($"error : {e.Message}");
+      }
+    }
+
+    public async Task<UserResponse> DeleteAsync(int id)
+    {
+      var userExists = await _usersRepository.FindByIdAsync(id);
+
+      if (userExists == null)
+      {
+        return new UserResponse("User not found");
+      }
+
+      try
+      {
+        _usersRepository.Remove(userExists);
+        await _unitOfWork.CompleteAsync();
+
+        return new UserResponse(userExists);
+      }
+      catch (Exception e)
+      {
+        return new UserResponse($"error: {e.Message}");
       }
     }
   }

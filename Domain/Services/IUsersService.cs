@@ -8,6 +8,8 @@ namespace meetapp_dotnet.Domain.Services
   public interface IUsersService
   {
     Task<IEnumerable<Users>> ListAsync();
-    Task<SaveUserResponse> SaveAsync(Users user);
+    Task<UserResponse> SaveAsync(Users user);
+    Task<UserResponse> UpdateAsync(int id, Users user);
+    Task<UserResponse> DeleteAsync(int id);
   }
 }

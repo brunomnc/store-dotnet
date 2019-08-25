@@ -11,5 +11,8 @@ namespace meetapp_dotnet.Domain.Services
     Task<UserResponse> SaveAsync(Users user);
     Task<UserResponse> UpdateAsync(int id, Users user);
     Task<UserResponse> DeleteAsync(int id);
+    Task<Users> FindByEmailAsync(string email);
+    Task<UserResponse> CreateUserAsync(Users user);
+
   }
 }

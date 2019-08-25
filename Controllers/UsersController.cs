@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using meetapp_dotnet.Domain.Models;
 using meetapp_dotnet.Domain.Services;
-using meetapp_dotnet.Resources;
+using meetapp_dotnet.Controllers.Resources;
 using AutoMapper;
 using meetapp_dotnet.Extensions;
 
@@ -16,9 +16,9 @@ namespace meetapp_dotnet.Controllers
     private readonly IUsersService _userService;
     private readonly IMapper _mapper;
 
-    public UsersController(IUsersService categoryService, IMapper mapper)
+    public UsersController(IUsersService userService, IMapper mapper)
     {
-      _userService = categoryService;
+      _userService = userService;
       _mapper = mapper;
     }
 
@@ -80,6 +80,28 @@ namespace meetapp_dotnet.Controllers
       }
 
       var userResource = _mapper.Map<Users, UsersResource>(result.User);
+      return Ok(userResource);
+    }
+
+    [HttpPost("{new}")]
+    public async Task<IActionResult> CreateUserAsync([FromBody]UserCredentialResource userCredentials)
+    {
+      if (!ModelState.IsValid)
+      {
+        return BadRequest(ModelState);
+      }
+
+      var user = _mapper.Map<UserCredentialResource, Users>(userCredentials);
+
+      var response = await _userService.CreateUserAsync(user);
+
+      if (!response.Success)
+      {
+        return BadRequest(response.Message);
+      }
+
+      var userResource = _mapper.Map<Users, UsersResource>(response.User);
+
       return Ok(userResource);
     }
   }

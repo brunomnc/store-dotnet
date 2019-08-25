@@ -1,4 +1,4 @@
-namespace meetapp_dotnet.Resources
+namespace meetapp_dotnet.Controllers.Resources
 {
   public class UsersResource
   {

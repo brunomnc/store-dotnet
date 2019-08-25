@@ -5,6 +5,7 @@ using meetapp_dotnet.Domain.Models;
 using meetapp_dotnet.Domain.Services;
 using meetapp_dotnet.Domain.Repositories;
 using meetapp_dotnet.Domain.Services.Communication;
+using meetapp_dotnet.Domain.Security.Hashing;
 
 namespace meetapp_dotnet.Services
 {
@@ -12,11 +13,13 @@ namespace meetapp_dotnet.Services
   {
     private readonly IUsersRepository _usersRepository;
     private readonly IUnitOfWork _unitOfWork;
+    private IPasswordHasher _passwordHasher;
 
-    public UsersService(IUsersRepository categoryRepository, IUnitOfWork unitOfWork)
+    public UsersService(IUsersRepository usersRepository, IUnitOfWork unitOfWork, IPasswordHasher passwordHasher)
     {
-      _usersRepository = categoryRepository;
+      _usersRepository = usersRepository;
       _unitOfWork = unitOfWork;
+      _passwordHasher = passwordHasher;
     }
 
     public async Task<IEnumerable<Users>> ListAsync()
@@ -83,6 +86,27 @@ namespace meetapp_dotnet.Services
       {
         return new UserResponse($"error: {e.Message}");
       }
+    }
+
+    public async Task<Users> FindByEmailAsync(string email)
+    {
+      return await _usersRepository.FindByEmailAsync(email);
+    }
+
+    public async Task<UserResponse> CreateUserAsync(Users user)
+    {
+      var userExists = await _usersRepository.FindByEmailAsync(user.Email);
+      if (userExists != null)
+      {
+        return new UserResponse($"error: Email already in user");
+      }
+
+      user.PasswordHash = _passwordHasher.HashPassword(user.PasswordHash);
+
+      await _usersRepository.AddAsync(user);
+      await _unitOfWork.CompleteAsync();
+
+      return new UserResponse(user);
     }
   }
 }

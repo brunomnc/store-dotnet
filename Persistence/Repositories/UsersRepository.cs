@@ -36,5 +36,11 @@ namespace meetapp_dotnet.Persistence.Repositories
     {
       _context.Users.Remove(user);
     }
+
+    public async Task<Users> FindByEmailAsync(string email)
+    {
+      return await _context.Users.SingleOrDefaultAsync(u => u.Email == email);
+    }
+
   }
 }

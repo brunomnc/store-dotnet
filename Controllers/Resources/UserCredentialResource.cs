@@ -1,18 +1,20 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace meetapp_dotnet.Resources
+namespace meetapp_dotnet.Controllers.Resources
 {
-  public class SaveUsersResource
+  public class UserCredentialResource
   {
     [Required]
     [MaxLength(50)]
     public string Name { get; set; }
+
     [Required]
-    [MaxLength(50)]
-    public int Age { get; set; }
+    [DataType(DataType.EmailAddress)]
+    [StringLength(255)]
     public string Email { get; set; }
+
     [Required]
-    [MaxLength(4)]
+    [StringLength(4)]
     public string PasswordHash { get; set; }
   }
 }

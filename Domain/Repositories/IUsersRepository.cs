@@ -11,5 +11,7 @@ namespace meetapp_dotnet.Domain.Repositories
     Task<Users> FindByIdAsync(int id);
     void Update(Users user);
     void Remove(Users user);
+
+    Task<Users> FindByEmailAsync(string email);
   }
 }

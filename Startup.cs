@@ -39,6 +39,8 @@ namespace meetapp_dotnet
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
       services.AddScoped<IUsersService, UsersService>();
       services.AddScoped<IUsersRepository, UsersRepository>();
+      services.AddScoped<IUnitOfWork, UnitOfWork>();
+      services.AddAutoMapper(typeof(Startup));
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

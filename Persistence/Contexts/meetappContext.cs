@@ -38,7 +38,7 @@ namespace meetapp_dotnet.Persistence.Contexts
                   .HasName("products_code_key")
                   .IsUnique();
 
-        entity.Property(e => e.Id).HasColumnName("id");
+        entity.Property(e => e.Id).HasColumnName("id").ValueGeneratedOnAdd();
 
         entity.Property(e => e.Amount)
                   .HasColumnName("amount")

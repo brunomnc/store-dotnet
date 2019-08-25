@@ -10,12 +10,16 @@ namespace meetapp_dotnet.Persistence.Repositories
   public class UsersRepository : BaseRepository, IUsersRepository
   {
     public UsersRepository(meetappContext context) : base(context)
-    {
-    }
+    { }
 
     public async Task<IEnumerable<Users>> ListAsync()
     {
       return await _context.Users.ToListAsync();
+    }
+
+    public async Task AddAsync(Users user)
+    {
+      await _context.Users.AddAsync(user);
     }
   }
 }

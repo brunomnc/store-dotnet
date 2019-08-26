@@ -54,6 +54,7 @@ namespace meetapp_dotnet.Security.Hashing
       return ByteArraysEqual(buffer, buffer2);
     }
 
+    [MethodImpl(MethodImplOptions.NoOptimization)]
     private bool ByteArraysEqual(byte[] a, byte[] b)
     {
       if (ReferenceEquals(a, b))

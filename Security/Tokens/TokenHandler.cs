@@ -5,6 +5,7 @@ using meetapp_dotnet.Domain.Models;
 using meetapp_dotnet.Domain.Security.Hashing;
 using System.Security.Claims;
 using System.Collections.Generic;
+using Microsoft.Extensions.Options;
 
 namespace meetapp_dotnet.Security.Tokens
 {
@@ -13,6 +14,14 @@ namespace meetapp_dotnet.Security.Tokens
     private readonly IPasswordHasher _passwordHasher;
     private readonly TokenOptions _tokenOptions;
     private readonly SigningConfigurations _signingConfigurations;
+
+    public TokenHandler(IOptions<TokenOptions> tokenOptionsSnapshop, SigningConfigurations signingConfigurations, IPasswordHasher passwordHasher)
+    {
+      _passwordHasher = passwordHasher;
+      _tokenOptions = tokenOptionsSnapshop.Value;
+      _signingConfigurations = signingConfigurations;
+    }
+
     public AccessToken CreateAccessToken(Users user)
     {
       var refreshToken = BuildRefreshToken(user);

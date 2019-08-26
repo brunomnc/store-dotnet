@@ -81,6 +81,7 @@ namespace meetapp_dotnet
       {
         app.UseDeveloperExceptionPage();
       }
+      app.UseAuthentication();
       app.UseMvc();
       app.UseCors("AllowSpecificOrigin");
     }

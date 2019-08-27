@@ -10,6 +10,7 @@ namespace meetapp_dotnet.Mapping
     public ModelToResourceProfile()
     {
       CreateMap<Users, UsersResource>();
+      CreateMap<Products, ProductsResource>();
 
       CreateMap<AccessToken, AccessTokenResouce>()
       .ForMember(a => a.AccessToken, opt => opt.MapFrom(a => a.Token));

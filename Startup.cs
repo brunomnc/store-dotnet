@@ -42,6 +42,9 @@ namespace meetapp_dotnet
       services.AddScoped<IUsersService, UsersService>();
       services.AddScoped<IUsersRepository, UsersRepository>();
 
+      services.AddScoped<IProductsService, ProductsService>();
+      services.AddScoped<IProductsRepository, ProductsRepository>();
+
       services.AddSingleton<IPasswordHasher, PasswordHasher>();
       services.AddSingleton<ITokenHandler, TokenHandler>();
 

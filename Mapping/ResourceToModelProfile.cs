@@ -9,6 +9,7 @@ namespace meetapp_dotnet.Mapping
     public ResourceToModelProfile()
     {
       CreateMap<SaveUsersResource, Users>();
+      CreateMap<SaveProductsResource, Products>();
       CreateMap<UserCredentialResource, Users>();
     }
   }

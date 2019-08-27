@@ -29,6 +29,7 @@ namespace meetapp_dotnet.Controllers
       var resources = _mapper.Map<IEnumerable<Users>, IEnumerable<UsersResource>>(users);
       return resources;
     }
+
     [HttpPost]
     public async Task<ActionResult<Users>> PostAsync([FromBody] SaveUsersResource resource)
     {

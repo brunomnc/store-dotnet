@@ -6,6 +6,6 @@ Dependencies:
 * Mapper
 * Npgsql
 
-To run it:
-dotnet restore
-dotnet run
+To run it:  
+dotnet restore    
+dotnet run 
